@@ -1,0 +1,42 @@
+version: "2"
+
+services:
+  web:
+    build: ./docker/php
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html/
+    environment:
+      - POSTGRES_DB_NAME
+      - POSTGRES_DB_USER
+      - POSTGRES_DB_PASSWORD
+      - POSTGRES_DB_HOST
+      - POSTGRES_DB_PORT
+
+  composer:
+    image: composer:1.9
+    command: ["composer", "install"]
+    volumes:
+      - ./src:/app
+
+  db:
+    build: ./docker/psql
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB_NAME
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - ./docker/psql/scripts:/docker-entrypoint-initdb.d/
+    networks:
+      - default
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
