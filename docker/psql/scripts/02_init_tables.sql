@@ -3,16 +3,15 @@
 CREATE TABLE qr_user (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
+  email VARCHAR(50) UNIQUE NOT NULL,
   name VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL
+  password VARCHAR(250) NOT NULL
 );
-
 CREATE TABLE qr_card (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   title VARCHAR(50) NOT NULL,
   text VARCHAR(255) NOT NULL,
   uuid uuid,
@@ -27,45 +26,40 @@ CREATE TABLE qr_card (
   accepted BOOL NOT NULL,
   CONSTRAINT "fk_user" FOREIGN KEY(user_id) REFERENCES qr_user(id) ON DELETE CASCADE
 );
-
 CREATE TABLE qr_comment (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   text VARCHAR(255) NOT NULL,
   user_id INT NOT NULL,
   mark INT NOT NULL,
   CONSTRAINT "fk_user" FOREIGN KEY(user_id) REFERENCES qr_user(id) ON DELETE CASCADE
 );
-
 CREATE TABLE qr_permission (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NOT NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   text VARCHAR(255) NOT NULL
 );
-
 CREATE TABLE qr_role (
   id serial PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   text VARCHAR(255) NOT NULL
 );
-
 CREATE TABLE qr_role_permission (
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NOT NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   role_id INT NOT NULL,
   permission_id INT NOT NULL,
   PRIMARY KEY(role_id, permission_id),
   CONSTRAINT "fk_role" FOREIGN KEY(role_id) REFERENCES qr_role(id) ON DELETE CASCADE,
   CONSTRAINT "fk_permission" FOREIGN KEY(permission_id) REFERENCES qr_permission(id) ON DELETE CASCADE
 );
-
 CREATE TABLE qr_warning (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  date_update TIMESTAMP NOT NULL,
+  date_update timestamp without time zone default (now() at time zone 'utc'),
   user_id INT NOT NULL,
   CONSTRAINT "fk_user" FOREIGN KEY(user_id) REFERENCES qr_user(id) ON DELETE CASCADE
 );

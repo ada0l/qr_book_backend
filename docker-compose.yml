@@ -16,7 +16,7 @@ services:
       - POSTGRES_DB_PORT
 
   composer:
-    image: composer:1.9
+    image: composer:2
     command: ["composer", "install"]
     volumes:
       - ./src:/app
