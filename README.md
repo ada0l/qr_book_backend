@@ -13,7 +13,7 @@ Service supports Basic Auth. For example
 curl --user andrew@dvfu.ru:123 https://locahost/user
 ```
 
-# Entrypoints
+# Endpoints
 
 ```
 GET /user - return profile of current user
