@@ -2,13 +2,6 @@
 
 class StatusCode
 {
-  public const OK_200 = 'HTTP/1.1 200 OK';
-  public const OK_201 = 'HTTP/1.1 201 Created';
-  public const ERROR_401 = 'HTTP/1.0 401 Unauthorized';
-  public const ERROR_403 = 'HTTP/1.0 403 Forbidden';
-  public const ERROR_404 = 'HTTP/1.1 404 Not Found';
-  public const ERROR_422 = 'HTTP/1.1 422 Unprocessable Entity';
-
   public const INFORMATION_100 = 'HTTP/1.1 100 Continue';
   public const INFORMATION_101 = 'HTTP/1.1 101 Switching Protocols';
   public const INFORMATION_102 = 'HTTP/1.1 102 Processing';
