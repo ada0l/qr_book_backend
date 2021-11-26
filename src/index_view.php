@@ -5,6 +5,7 @@ include_once __DIR__ . '/core/headers.php';
 
 include_once __DIR__ . '/controllers/not_found.php';
 include_once __DIR__ . '/controllers/user.php';
+include_once __DIR__ . '/controllers/test_validator.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);
@@ -18,6 +19,9 @@ $params = array();
 switch ($uri[1]) {
   case 'user':
     $controller = UserController;
+    break;
+  case 'test':
+    $controller = TestValidatorContoller;
     break;
 }
 

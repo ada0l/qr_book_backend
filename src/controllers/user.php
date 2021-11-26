@@ -36,7 +36,7 @@ class UserController extends BaseControllerWithUserModel
       return $this->unprocessableEntityResponse();
     } else {
       return new Response(
-        StatusCode::OK_201,
+        StatusCode::SUCCESS_201,
         json_encode(array(
           "data" => 'The user is created'
         ))

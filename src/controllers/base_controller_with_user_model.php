@@ -22,7 +22,7 @@ class BaseControllerWithUserModel extends BaseController
   {
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
       return new Response(
-        StatusCode::ERROR_401,
+        StatusCode::CLIENT_ERROR_404,
         json_encode(array("data" => "You are not loggined"))
       );
     }
@@ -36,7 +36,7 @@ class BaseControllerWithUserModel extends BaseController
       return $user;
     } else {
       return new Response(
-        StatusCode::ERROR_403,
+        StatusCode::CLIENT_ERROR_403,
         json_encode(array("data" => "Incorrect email or password"))
       );
     }

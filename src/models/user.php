@@ -12,7 +12,7 @@ class UserModel extends BaseModel
 
   public function find($email)
   {
-    $statement = "SELECT name, email, password FROM qr_user WHERE email = :email";
+    $statement = "SELECT id, name, email, password FROM qr_user WHERE email = :email";
     $result = $this->getConnector()->select(
       $statement,
       array("email" => $email)

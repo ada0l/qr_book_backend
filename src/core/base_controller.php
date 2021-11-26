@@ -90,7 +90,7 @@ class Response
   {
     $this->status_code = $status_code;
     if ($status_code == null) {
-      $status_code = StatusCode::OK_200;
+      $status_code = StatusCode::SUCCESS_200;
     }
     $this->body = $body;
     if ($body == null) {
@@ -142,7 +142,7 @@ class BaseController
   }
 
   public function getResponse() {
-    switch ($this->getMethod()) {
+    switch ($this->requestMethod) {
       case 'GET':
         $response = $this->getMethod();
         break;
@@ -176,6 +176,7 @@ class BaseController
     }
     return $response;
   }
+
 
   public function getMethod()
   {
