@@ -13,7 +13,7 @@ class UserController extends BaseControllerWithUserModel
   /*
    * Get current user
    */
-  public function get_method()
+  public function getMethod()
   {
     $auth = $this->getAuthorization();
     if (is_array($auth)) {
@@ -28,7 +28,7 @@ class UserController extends BaseControllerWithUserModel
   /*
    * Create user
    */
-  public function post_method()
+  public function postMethod()
   {
     $input = (array) json_decode(file_get_contents('php://input'));
     $result = $this->getUserModel()->insert($input);

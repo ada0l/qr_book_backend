@@ -10,7 +10,7 @@ class NotFoundController extends BaseControllerWithUserModel
     parent::__construct($db, $requestMethod, $params);
   }
 
-  public function get_response() {
+  public function getResponse() {
     return $this->notFoundResponse();
   }
 }

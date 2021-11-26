@@ -141,41 +141,41 @@ class BaseController
 
   public function processRequest()
   {
-    $response = $this->get_response();
+    $response = $this->getResponse();
     header($response->getStatus());
     if ($response->getBody()) {
       echo $response->getBody();
     }
   }
 
-  public function get_response() {
+  public function getResponse() {
     switch ($this->getMethod()) {
       case 'GET':
-        $response = $this->get_method();
+        $response = $this->getMethod();
         break;
       case 'HEAD':
-        $response = $this->head_method();
+        $response = $this->headMethod();
         break;
       case 'POST':
-        $response = $this->post_method();
+        $response = $this->postMethod();
         break;
       case 'PUT':
-        $response = $this->put_method();
+        $response = $this->putMethod();
         break;
       case 'DELETE':
-        $response = $this->delete_method();
+        $response = $this->deleteMethod();
         break;
       case 'CONNECT':
-        $response = $this->connect_method();
+        $response = $this->connectMethod();
         break;
       case 'OPTIONS':
-        $response = $this->options_method();
+        $response = $this->optionsMethod();
         break;
       case 'TRACE':
-        $response = $this->trace_method();
+        $response = $this->traceMethod();
         break;
       case 'PATCH':
-        $response = $this->patch_method();
+        $response = $this->patchMethod();
         break;
       default:
         $response = $this->methodNotAllowedResponse();
@@ -184,47 +184,47 @@ class BaseController
     return $response;
   }
 
-  public function get_method()
+  public function getMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function head_method()
+  public function headMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function post_method()
+  public function postMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function put_method()
+  public function putMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function delete_method()
+  public function deleteMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function connect_method()
+  public function connectMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function options_method()
+  public function optionsMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function trace_method()
+  public function traceMethod()
   {
     return $this->methodNotAllowedResponse();
   }
 
-  public function patch_method()
+  public function patchMethod()
   {
     return $this->methodNotAllowedResponse();
   }
@@ -253,11 +253,6 @@ class BaseController
   public function getDatabase()
   {
     return $this->db;
-  }
-
-  public function getMethod()
-  {
-    return $this->requestMethod;
   }
 
   public function getData()
