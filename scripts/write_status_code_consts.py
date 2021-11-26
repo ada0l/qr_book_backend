@@ -99,7 +99,7 @@ def get_verdict_by_status(item):
     else:
         return 'SERVER_ERROR'
 
-f = open('input.txt', 'w')
+f = open('output.txt', 'w')
 
 for item in (input.split("\n")):
     item_splited = item.split()
