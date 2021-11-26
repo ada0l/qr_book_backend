@@ -19,8 +19,6 @@ switch ($uri[1]) {
   case 'user':
     $controller = UserController;
     break;
-  case 'login':
-    $controller = LoginController;
 }
 
 if ($controller == null) {
