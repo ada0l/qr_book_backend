@@ -38,9 +38,12 @@ class UserModel extends BaseModel
   {
     $user = $this->find($params['email']);
     if (!$user) {
-      echo ("Not found");
-      return false;
+      return null;
     }
-    return password_verify($params['password'], $user['password']);
+    if (password_verify($params['password'], $user['password'])) {
+      return $user;
+    } else {
+      return null;
+    }
   }
 }
