@@ -45,7 +45,7 @@ class DatabaseConnector
     try {
       $statement = $this->dbConnection->prepare($statement_);
       $statement->execute($params);
-      return $statement->rowCount();
+      return $statement;
     } catch (\PDOException $e) {
       exit($e->getMessage());
     }

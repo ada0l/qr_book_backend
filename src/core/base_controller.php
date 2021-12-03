@@ -123,13 +123,26 @@ class BaseController
 {
   private $db;
   private $requestMethod;
-  private $params;
+  private $methodsFunctions;
+  private $methodsValidators;
 
   public function __construct($db, $requestMethod, $params)
   {
     $this->db = $db;
     $this->requestMethod = $requestMethod;
     $this->params = $params;
+    $this->methodsFunctions = array(
+      'GET' => "getMethod",
+      'HEAD' => "headMethod",
+      'POST' => "postMethod",
+      'PUT' => "putMethod",
+      'DELETE' => "deleteMethod",
+      'CONNECT' => "connectMethod",
+      'OPTIONS' => "optionsMethod",
+      'TRACE' => "traceMethod",
+      'PATCH' => "patchMethod"
+    );
+    $this->methodsValidators = array();
   }
 
   public function processRequest()
@@ -141,42 +154,29 @@ class BaseController
     }
   }
 
-  public function getResponse() {
-    switch ($this->requestMethod) {
-      case 'GET':
-        $response = $this->getMethod();
-        break;
-      case 'HEAD':
-        $response = $this->headMethod();
-        break;
-      case 'POST':
-        $response = $this->postMethod();
-        break;
-      case 'PUT':
-        $response = $this->putMethod();
-        break;
-      case 'DELETE':
-        $response = $this->deleteMethod();
-        break;
-      case 'CONNECT':
-        $response = $this->connectMethod();
-        break;
-      case 'OPTIONS':
-        $response = $this->optionsMethod();
-        break;
-      case 'TRACE':
-        $response = $this->traceMethod();
-        break;
-      case 'PATCH':
-        $response = $this->patchMethod();
-        break;
-      default:
-        $response = $this->methodNotAllowedResponse();
-        break;
+  public function getResponse()
+  {
+    if (array_key_exists(
+      $this->requestMethod,
+      $this->methodsValidators
+    )) {
+      $validatorClass =
+        $this->methodsValidators[$this->requestMethod];
+      $verdict = (new $validatorClass())->check($this->getData());
+      if ($verdict) {
+        return new Response(
+          StatusCode::CLIENT_ERROR_400,
+          json_encode(array(
+            "data" => $verdict
+          ))
+        );
+      }
     }
+    $functionMethod = $this->methodsFunctions[$this->requestMethod]
+      ?? "methodNotAllowedResponse";
+    $response = $this->$functionMethod();
     return $response;
   }
-
 
   public function getMethod()
   {
@@ -225,23 +225,32 @@ class BaseController
 
   public function unprocessableEntityResponse()
   {
-    return new Response(StatusCode::ERROR_422, array(
-      'data' => 'Invalid input'
-    ));
+    return new Response(
+      StatusCode::CLIENT_ERROR_422,
+      json_encode(array(
+        'data' => 'Invalid input'
+      ))
+    );
   }
 
   public function notFoundResponse()
   {
-    return new Response(StatusCode::CLIENT_ERROR_404, array(
-      'data' => 'Not Found'
-    ));
+    return new Response(
+      StatusCode::CLIENT_ERROR_404,
+      json_encode(array(
+        'data' => 'Not Found'
+      ))
+    );
   }
 
   public function methodNotAllowedResponse()
   {
-    return new Response(StatusCode::CLIENT_ERROR_405, array(
-      'data' => 'Method Not Allowed'
-    ));
+    return new Response(
+      StatusCode::CLIENT_ERROR_405,
+      json_encode(array(
+        'data' => 'Method Not Allowed'
+      ))
+    );
   }
 
   public function getDatabase()
@@ -257,5 +266,15 @@ class BaseController
   public function getDB()
   {
     return $this->db;
+  }
+
+  public function addMethodFunction($methodKey, $methodFunction)
+  {
+    $this->methodsFunctions[$methodKey] = $methodFunction;
+  }
+
+  public function addMethodValidator($methodKey, $methodValidator)
+  {
+    $this->methodsValidators[$methodKey] = $methodValidator;
   }
 }

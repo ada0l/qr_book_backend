@@ -3,15 +3,27 @@
 class Validator
 {
   private $fields = null;
+  private $prohibitOtherFields;
 
-  public function __construct($fields)
+  public function __construct($fields, $prohibitOtherFields)
   {
     $this->fields = $fields;
+    $this->prohibitOtherFields = $prohibitOtherFields;
   }
 
   public function check($inputJson)
   {
     $errors = array();
+
+    // check not expected fields in input
+    if ($this->prohibitOtherFields) {
+      foreach (array_keys($inputJson) as $field) {
+        if (!isset($this->fields[$field])) {
+          array_push($errors, "{$field} field is no expected");
+        }
+      }
+    }
+
     foreach ($this->fields as $field => $funcs) {
       if (!isset($inputJson[$field])) {
         array_push($errors, "{$field} field is not set");
