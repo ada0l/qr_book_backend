@@ -23,12 +23,8 @@ switch ($uri[1]) {
     break;
 }
 
-if ($controller == null) {
-  header(StatusCode::ERROR_404);
-} else {
-  (new $controller(
-    $dbConnector,
-    $_SERVER["REQUEST_METHOD"],
-    $params
-  ))->processRequest();
-}
+(new $controller(
+  $dbConnector,
+  $_SERVER["REQUEST_METHOD"],
+  $params
+))->processRequest();
