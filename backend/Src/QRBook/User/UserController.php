@@ -35,7 +35,9 @@ class UserController extends BaseControllerWithUserModel
   public function postMethod()
   {
     $input = $this->getData();
-    $result = $this->getUserModel()->find($input['email']);
+    $result = $this->getUserModel()->find(
+      array("email" => $input['email'])
+    );
     if ($result != null) {
       return new Response(
         StatusCode::CLIENT_ERROR_400,

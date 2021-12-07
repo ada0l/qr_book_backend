@@ -2,6 +2,8 @@
 
 namespace Src\Core;
 
+use Exception;
+
 class BaseModel
 {
   private $db = null;
@@ -14,5 +16,25 @@ class BaseModel
   public function getConnector()
   {
     return $this->db;
+  }
+
+  public function findAll()
+  {
+    throw new Exception("Not implemented");
+  }
+
+  public function find($params)
+  {
+    throw new Exception("Not implemented");
+  }
+
+  public function insert($params)
+  {
+    throw new Exception("Not implemented");
+  }
+
+  public function delete($params)
+  {
+    throw new Exception("Not implemented");
   }
 }

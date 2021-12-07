@@ -2,7 +2,7 @@
 
 namespace Src\QRBook\User;
 
-Use Src\Core\BaseModel;
+use Src\Core\BaseModel;
 
 class UserModel extends BaseModel
 {
@@ -21,7 +21,7 @@ class UserModel extends BaseModel
     return $result;
   }
 
-  public function findWithPassword($email)
+  public function findWithPassword($params)
   {
     $statement = "
       SELECT
@@ -32,7 +32,7 @@ class UserModel extends BaseModel
         email = :email";
     $result = $this->getConnector()->select(
       $statement,
-      array("email" => $email)
+      $params
     )[0];
 
     if ($result == null) {
@@ -73,7 +73,7 @@ class UserModel extends BaseModel
 
   public function verify($params)
   {
-    $user = $this->findWithPassword($params['email']);
+    $user = $this->findWithPassword(array('email' => $params['email']));
     if (!$user) {
       return null;
     }
