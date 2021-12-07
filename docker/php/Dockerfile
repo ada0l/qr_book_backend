@@ -23,11 +23,5 @@ RUN a2enmod ssl
 
 COPY ./php.ini /usr/local/etc/php/
 
-# Install Composer
-#COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-#RUN cd /var/www/html
-#RUN composer install
-#RUN composer dump-autoload
-
 EXPOSE 80
 EXPOSE 443

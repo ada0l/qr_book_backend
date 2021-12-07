@@ -1,7 +1,8 @@
 <?php
 
-include_once __DIR__ . '/../core/database_base_model.php';
-include_once __DIR__ . '/role.php';
+namespace Src\QRBook\User;
+
+Use Src\Core\BaseModel;
 
 class UserModel extends BaseModel
 {

@@ -1,15 +1,17 @@
 <?php
 
-include_once __DIR__ . '/./base_controller_with_user_model.php';
-include_once __DIR__ . '/../models/user.php';
-include_once __DIR__ . '/../validators/create_user.php';
+namespace Src\QRBook\User;
+
+use Src\Core\Response;
+use Src\Core\StatusCode;
+use Src\QRBook\General\BaseControllerWithUserModel;
 
 class UserController extends BaseControllerWithUserModel
 {
   public function __construct($db, $requestMethod, $params)
   {
     parent::__construct($db, $requestMethod, $params);
-    $this->addMethodValidator("POST", CreateUserValidator);
+    $this->addMethodValidator("POST", "Src\QRBook\User\CreateUserValidator");
   }
 
   /*

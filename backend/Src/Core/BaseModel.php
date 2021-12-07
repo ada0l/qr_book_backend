@@ -1,5 +1,7 @@
 <?php
 
+namespace Src\Core;
+
 class BaseModel
 {
   private $db = null;

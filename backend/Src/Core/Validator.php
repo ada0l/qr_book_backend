@@ -1,5 +1,7 @@
 <?php
 
+namespace Src\Core;
+
 class Validator
 {
   private $fields = null;

@@ -1,6 +1,8 @@
 <?php
 
-include_once __DIR__ . '/../core/validator.php';
+namespace Src\QRBook\User;
+
+use Src\Core\Validator;
 
 class CreateUserValidator extends Validator
 {
