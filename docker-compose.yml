@@ -17,7 +17,7 @@ services:
 
   composer:
     image: composer:2
-    command: ["composer", "optimize-autoloader"]
+    command: ["composer", "dump-autoload"]
     volumes:
       - ./backend:/app
 
