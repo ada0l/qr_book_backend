@@ -77,8 +77,7 @@ class UserController extends BaseControllerWithUserModel
             $this->getUserModel()->update($input);
             return new Response(
                 StatusCode::SUCCESS_200,
-                json_encode($input
-                )
+                json_encode(array("data" => "The user is updated"))
             );
         }
         return $auth;
