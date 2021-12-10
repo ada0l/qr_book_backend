@@ -1,5 +1,8 @@
 {
-  "require": {},
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
   "autoload": {
     "psr-4": {
         "Src\\": "Src"
