@@ -71,6 +71,23 @@ class UserModel extends BaseModel
         );
     }
 
+    public function update($params)
+    {
+        $statement = "
+        UPDATE
+            qr_user
+        SET
+            email=:email,
+            name=:name
+        WHERE
+            email=:email_last
+        ";
+        return $this->getConnector()->executeStatement(
+            $statement,
+            $params
+        );
+    }
+
     public function verify($params)
     {
         $user = $this->findWithPassword(array('email' => $params['email']));

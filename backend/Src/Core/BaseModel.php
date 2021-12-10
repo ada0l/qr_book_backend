@@ -3,6 +3,7 @@
 namespace Src\Core;
 
 use Exception;
+use Src\Core\DatabaseConnector;
 
 class BaseModel
 {
@@ -13,7 +14,7 @@ class BaseModel
         $this->db = $db;
     }
 
-    public function getConnector()
+    public function getConnector(): DatabaseConnector
     {
         return $this->db;
     }

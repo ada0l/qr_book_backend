@@ -7,6 +7,8 @@ RUN requirements="nano cron libpq5 libpq-dev libmcrypt-dev libmcrypt4 libcurl3-d
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install soap \
+    && pecl install xdebug-2.7.1 \
+    && docker-php-ext-enable xdebug \
     && requirementsToRemove="libmcrypt-dev libcurl3-dev libxml2-dev libfreetype6-dev libjpeg62-turbo-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove
 

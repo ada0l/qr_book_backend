@@ -13,6 +13,7 @@ class UserController extends BaseControllerWithUserModel
     {
         parent::__construct($db, $requestMethod, $params);
         $this->addMethodValidator("POST", "Src\QRBook\User\CreateUserValidator");
+        $this->addMethodValidator("PUT", "Src\QRBook\User\UpdateUserValidator");
     }
 
     /*
@@ -56,5 +57,30 @@ class UserController extends BaseControllerWithUserModel
                 "data" => "The user is created"
             ))
         );
+    }
+
+    public function putMethod(): Response
+    {
+        $input = $this->getData();
+        $auth = $this->getAuthorization();
+        if (is_array($auth)) {
+            $result = $this->getUserModel()->find(
+                array("email" => $input['email'])
+            );
+            if ($auth['email'] != $input['email'] && $result != null) return new Response(
+                StatusCode::CLIENT_ERROR_400,
+                json_encode(array(
+                    "data" => "email is busy"
+                ))
+            );
+            $input['email_last'] = $auth['email'];
+            $this->getUserModel()->update($input);
+            return new Response(
+                StatusCode::SUCCESS_200,
+                json_encode($input
+                )
+            );
+        }
+        return $auth;
     }
 }
