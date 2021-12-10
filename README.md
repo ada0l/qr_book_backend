@@ -16,6 +16,7 @@ curl --user andrew@dvfu.ru:123 https://locahost/user
 # Endpoints
 
 ## user
+
 ```
 GET /user - return profile of current user
 ```
@@ -31,6 +32,7 @@ PUT /user - update authorized user. Required fields is email, name.
 # TO DO endpoints
 
 ## qr's
+
 ```
 GET /qr - get list of qr's of user.
 ```
@@ -69,6 +71,10 @@ POST /admin/reject?id=10 - reject qr, whose id is 10.
 
 ```
 GET /comment - get all comments.
+```
+
+```
+PUT /comment?id=10 - update comment of user, whose id is 10.
 ```
 
 ```
