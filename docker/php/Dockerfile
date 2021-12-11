@@ -23,7 +23,8 @@ RUN a2enmod rewrite
 RUN a2ensite default-ssl
 RUN a2enmod ssl
 
-COPY ./php.ini /usr/local/etc/php/
+COPY ./php.ini $PHP_INI_DIR/
+COPY ./xdebug.ini $PHP_INI_DIR/conf.d/
 
 EXPOSE 80
 EXPOSE 443
