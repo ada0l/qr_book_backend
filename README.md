@@ -53,6 +53,10 @@ PUT /qr?id=10 - update qr of user, whose id is 10.
 DELETE /qr?id=10 - delete qr of user, whose id is 10.
 ```
 
+```
+GET /link?uuid=... - redirect from qr to user link
+```
+
 ## admin panel
 
 ```
