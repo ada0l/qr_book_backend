@@ -10,7 +10,7 @@ class QRCodeModel extends BaseModel
     {
         $statement = "
         SELECT
-            c.*, u.email
+            c.*
         FROM
             qr_card c
         LEFT JOIN
@@ -24,7 +24,7 @@ class QRCodeModel extends BaseModel
     public function find($params) {
         $statement = "
         SELECT
-            c.*, u.email
+            c.*
         FROM
             qr_card c
         LEFT JOIN
@@ -43,6 +43,29 @@ class QRCodeModel extends BaseModel
         VALUES
             (:title, :text, :uuid, :user_id, :light_color, :dark_color, :frame_id, :frame_text, :frame_color,
                 :frame_text_color, :quality)
+        ";
+        return $this->getConnector()->executeStatement(
+            $statement,
+            $params
+        );
+    }
+    public function update($params) {
+        $statement = "
+        UPDATE 
+            qr_card
+        SET
+            title=:title,
+            text=:text,
+            uuid=:uuid,
+            light_color=:light_color,
+            dark_color=:dark_color,
+            frame_id=:frame_id,
+            frame_text=:frame_text,
+            frame_color=:frame_color,
+            frame_text_color=:frame_text_color,
+            quality=:quality
+        WHERE
+            id=:id
         ";
         return $this->getConnector()->executeStatement(
             $statement,
