@@ -8,7 +8,6 @@ class RoleModel extends BaseModel
 {
     public function find($params)
     {
-        echo(var_dump($params));
         $statement = "SELECT id, text FROM qr_role WHERE text = :text";
         return $this->getConnector()->select($statement, $params)[0];
     }
