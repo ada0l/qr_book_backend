@@ -76,6 +76,14 @@ class Validator
         return null;
     }
 
+    public static function isColorRGB($data): ?string
+    {
+        if (preg_match('/^[a-fA-F0-9]{6}$/', $data)) {
+            return null;
+        }
+        return 'is not color in rbg';
+    }
+
     public static function lenInRange($data, $begin, $end): ?string
     {
         return Validator::inRange(strlen($data), $begin, $end);
