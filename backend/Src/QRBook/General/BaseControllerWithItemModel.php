@@ -54,4 +54,26 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
         }
         return $auth;
     }
+
+    public function postMethod(): Response
+    {
+        $auth = $this->getAuthorization();
+        if (is_array($auth)) {
+            $input = $this->getData();
+            $input['user_id'] = $auth['id'];
+            $this->beforeCreate($auth, $input);
+            $this->itemModel->insert($input);
+            return new Response(
+                StatusCode::SUCCESS_201,
+                array(
+                    "data" => "The object is created"
+                )
+            );
+        }
+        return $auth;
+    }
+
+    public function beforeCreate($auth, & $input)
+    {
+    }
 }
