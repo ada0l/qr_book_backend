@@ -72,4 +72,17 @@ class QRCodeModel extends BaseModel
             $params
         );
     }
+
+    public function delete($params) {
+        $statement = "
+        DELETE FROM
+            qr_card
+        WHERE
+            id=:id
+        ";
+        return $this->getConnector()->executeStatement(
+            $statement,
+            $params
+        );
+    }
 }
