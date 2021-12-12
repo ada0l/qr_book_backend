@@ -35,6 +35,18 @@ class QRCodeModel extends BaseModel
         return $this->getConnector()->select($statement, $params)[0];
     }
 
+    public function findByUUID($params) {
+        $statement = "
+        SELECT
+            c.*
+        FROM
+            qr_card c
+        WHERE
+            c.uuid = :uuid
+        ";
+        return $this->getConnector()->select($statement, $params)[0];
+    }
+
     public function insert($params) {
         $statement = "
         INSERT INTO qr_card
