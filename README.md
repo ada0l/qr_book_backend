@@ -29,8 +29,6 @@ POST /user - create new user. Required fields is email, name, password.
 PUT /user - update authorized user. Required fields is email, name.
 ```
 
-# TO DO endpoints
-
 ## qr's
 
 ```
@@ -40,6 +38,10 @@ GET /qr - get list of qr's of user.
 ```
 GET /qr?id=10 - get qr of user, whose id is 10.
 ```
+
+# TO DO endpoints
+
+## qr's
 
 ```
 POST /qr - create new qr.
