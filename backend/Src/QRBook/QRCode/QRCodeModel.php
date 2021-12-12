@@ -34,4 +34,19 @@ class QRCodeModel extends BaseModel
         ";
         return $this->getConnector()->select($statement, $params)[0];
     }
+
+    public function insert($params) {
+        $statement = "
+        INSERT INTO qr_card
+            (title, text, uuid, user_id, light_color, dark_color, frame_id, frame_text, frame_color,
+                frame_text_color, quality)
+        VALUES
+            (:title, :text, :uuid, :user_id, :light_color, :dark_color, :frame_id, :frame_text, :frame_color,
+                :frame_text_color, :quality)
+        ";
+        return $this->getConnector()->executeStatement(
+            $statement,
+            $params
+        );
+    }
 }
