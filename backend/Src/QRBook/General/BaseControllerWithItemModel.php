@@ -105,6 +105,7 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
                 );
             }
         }
+        return $auth;
     }
 
     public function deleteMethod(): Response
