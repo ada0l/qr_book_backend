@@ -92,8 +92,6 @@ class UserModel extends BaseModel
             unset($user['password']);
             return $user;
         } else {
-            echo(var_dump($user));
-            echo(var_dump($params));
             return null;
         }
     }
