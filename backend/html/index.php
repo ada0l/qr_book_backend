@@ -43,6 +43,9 @@ switch ($uri[1]) {
     case 'qr':
         $controller = "Src\QRBook\QRCode\QRCodeController";
         break;
+    case 'link':
+        $controller = "Src\QRBook\Link\LinkController";
+        break;
 }
 
 (new $controller(
