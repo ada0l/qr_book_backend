@@ -6,15 +6,9 @@ use Src\Core\BaseModel;
 
 class UserModel extends BaseModel
 {
-    public function findAll()
+    public function find($params)
     {
-        $statement = "SELECT * FROM qr_user";
-        return $this->getConnector()->select($statement);
-    }
-
-    public function find($email)
-    {
-        $result = $this->findWithPassword($email);
+        $result = $this->findWithPassword(array("email" => $params['email']));
         $result["password"] = null;
         unset($result["password"]);
 
@@ -24,12 +18,12 @@ class UserModel extends BaseModel
     public function findWithPassword($params)
     {
         $statement = "
-      SELECT
-        id, name, email, password, role_id
-      FROM
-        qr_user
-      WHERE
-        email = :email";
+        SELECT
+            id, name, email, password, role_id
+        FROM
+            qr_user
+        WHERE
+            email=:email";
         $result = $this->getConnector()->select(
             $statement,
             $params
@@ -41,7 +35,8 @@ class UserModel extends BaseModel
 
         // get permissions as string
         $result["role"] =
-            (new RoleModel($this->getConnector()))->findWithPermissions($result['role_id']);
+            (new RoleModel($this->getConnector()))->findWithPermissions(
+                array('id' => $result['role_id']));
 
         // convert string to array
         $result["role"]["permissions"] =
@@ -64,7 +59,7 @@ class UserModel extends BaseModel
             PASSWORD_DEFAULT
         );
         $params['role_id'] =
-            (new RoleModel($this->getConnector()))->find("common")['id'];
+            (new RoleModel($this->getConnector()))->find(array("text" => "common"))['id'];
         return $this->getConnector()->executeStatement(
             $statement,
             $params
@@ -78,7 +73,8 @@ class UserModel extends BaseModel
             qr_user
         SET
             email=:email,
-            name=:name
+            name=:name,
+            date_update=(now() at time zone 'utc')
         WHERE
             email=:email_last
         ";
@@ -96,6 +92,8 @@ class UserModel extends BaseModel
             unset($user['password']);
             return $user;
         } else {
+            echo(var_dump($user));
+            echo(var_dump($params));
             return null;
         }
     }

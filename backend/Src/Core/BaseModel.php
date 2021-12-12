@@ -22,7 +22,7 @@ class BaseModel
     /**
      * @throws Exception
      */
-    public function findAll()
+    public function findAll($params)
     {
         throw new Exception("Not implemented");
     }

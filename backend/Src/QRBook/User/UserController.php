@@ -25,7 +25,7 @@ class UserController extends BaseControllerWithUserModel
         if (is_array($auth)) {
             return new Response(
                 StatusCode::SUCCESS_200,
-                json_encode($auth)
+                array("data" => $auth)
             );
         }
         return $auth;
@@ -45,20 +45,19 @@ class UserController extends BaseControllerWithUserModel
         );
         if ($result != null) return new Response(
             StatusCode::CLIENT_ERROR_400,
-            json_encode(array(
-                "data" => "email is busy"
-            ))
+            array("data" => "email is busy")
         );
         $result = $this->getUserModel()->insert($input);
         if ($result == null) return $this->unprocessableEntityResponse();
         else return new Response(
             StatusCode::SUCCESS_201,
-            json_encode(array(
-                "data" => "The user is created"
-            ))
+            array("data" => "The user is created")
         );
     }
 
+    /**
+     * @throws Exception
+     */
     public function putMethod(): Response
     {
         $input = $this->getData();
@@ -69,15 +68,13 @@ class UserController extends BaseControllerWithUserModel
             );
             if ($auth['email'] != $input['email'] && $result != null) return new Response(
                 StatusCode::CLIENT_ERROR_400,
-                json_encode(array(
-                    "data" => "email is busy"
-                ))
+                array("data" => "email is busy")
             );
             $input['email_last'] = $auth['email'];
             $this->getUserModel()->update($input);
             return new Response(
                 StatusCode::SUCCESS_200,
-                json_encode(array("data" => "The user is updated"))
+                array("data" => "The user is updated")
             );
         }
         return $auth;

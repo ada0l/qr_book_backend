@@ -34,7 +34,7 @@ class BaseController
         $response = $this->getResponse();
         header($response->getStatus());
         if ($response->getBody()) {
-            echo $response->getBody();
+            echo(json_encode($response->getBody()));
         }
     }
 

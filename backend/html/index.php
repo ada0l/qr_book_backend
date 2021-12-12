@@ -4,7 +4,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use Src\Core\DatabaseConnector;
 
-header("Content-Type: application/json; charset=UTF-8");
+//header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, X-Custom-Header");
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -39,6 +39,9 @@ $controller = "Src\QRBook\General\NotFoundController";
 switch ($uri[1]) {
     case 'user':
         $controller = "Src\QRBook\User\UserController";
+        break;
+    case 'qr':
+        $controller = "Src\QRBook\QRCode\QRCodeController";
         break;
 }
 

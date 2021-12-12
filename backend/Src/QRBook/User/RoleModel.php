@@ -6,13 +6,14 @@ use Src\Core\BaseModel;
 
 class RoleModel extends BaseModel
 {
-    public function find($text)
+    public function find($params)
     {
+        echo(var_dump($params));
         $statement = "SELECT id, text FROM qr_role WHERE text = :text";
-        return $this->getConnector()->select($statement, array($text))[0];
+        return $this->getConnector()->select($statement, $params)[0];
     }
 
-    public function findWithPermissions($id)
+    public function findWithPermissions($params)
     {
         $statement = "
       SELECT
@@ -27,7 +28,7 @@ class RoleModel extends BaseModel
           r.id = :id
       GROUP BY
           r.id;";
-        return $this->getConnector()->select($statement, array($id))[0];
+        return $this->getConnector()->select($statement, $params)[0];
     }
 }
 
