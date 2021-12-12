@@ -39,10 +39,6 @@ GET /qr - get list of qr's of user.
 GET /qr?id=10 - get qr of user, whose id is 10.
 ```
 
-# TO DO endpoints
-
-## qr's
-
 ```
 POST /qr - create new qr.
 ```
@@ -50,6 +46,11 @@ POST /qr - create new qr.
 ```
 PUT /qr?id=10 - update qr of user, whose id is 10.
 ```
+
+# TO DO endpoints
+
+## qr's
+
 
 ```
 DELETE /qr?id=10 - delete qr of user, whose id is 10.
