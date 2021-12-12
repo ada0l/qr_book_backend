@@ -78,6 +78,10 @@ GET /comment - get all comments.
 ```
 
 ```
+GET /comment?id=10 - get all comments, whose id is 10.
+```
+
+```
 PUT /comment?id=10 - update comment of user, whose id is 10.
 ```
 
