@@ -96,7 +96,7 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
                 $this->itemModel->update($input);
                 return new Response(
                     StatusCode::SUCCESS_200,
-                    array("data" => "The object is updated")
+                    array("data" => $this->itemModel->find(array('id' => $_GET['id'])))
                 );
             } else {
                 return new Response(
