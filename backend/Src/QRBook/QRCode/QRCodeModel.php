@@ -75,7 +75,8 @@ class QRCodeModel extends BaseModel
             frame_text=:frame_text,
             frame_color=:frame_color,
             frame_text_color=:frame_text_color,
-            quality=:quality
+            quality=:quality,
+            date_update=(now() at time zone 'utc')
         WHERE
             id=:id
         ";
