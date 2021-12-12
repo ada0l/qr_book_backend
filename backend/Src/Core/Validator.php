@@ -58,6 +58,16 @@ class Validator
         return null;
     }
 
+    public static function isBool($data): ?string
+    {
+        // ПХП говно забагованное
+        // https://bugs.php.net/bug.php?id=49510
+        if (gettype($data) != 'boolean') {
+            return 'is not bool';
+        }
+        return null;
+    }
+
     public static function isEmail($data): ?string
     {
         if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
