@@ -102,6 +102,7 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
             }
             $input['user_id'] = $auth['id'];
             $this->beforeCreate($auth, $input);
+            $this->itemModel->insert($input);
             return new Response(
                 StatusCode::SUCCESS_201,
                 array("data" => $this->itemModel->findByUserId(array('user_id' => $auth['id'])))
