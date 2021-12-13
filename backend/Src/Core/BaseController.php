@@ -105,9 +105,9 @@ class BaseController
     {
         return new Response(
             StatusCode::CLIENT_ERROR_422,
-            json_encode(array(
+            array(
                 'data' => 'Invalid input'
-            ))
+            )
         );
     }
 
@@ -115,9 +115,9 @@ class BaseController
     {
         return new Response(
             StatusCode::CLIENT_ERROR_404,
-            json_encode(array(
+            array(
                 'data' => 'Not Found'
-            ))
+            )
         );
     }
 
@@ -125,9 +125,9 @@ class BaseController
     {
         return new Response(
             StatusCode::CLIENT_ERROR_405,
-            json_encode(array(
+            array(
                 'data' => 'Method Not Allowed'
-            ))
+            )
         );
     }
 
