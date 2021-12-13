@@ -216,24 +216,38 @@ GET /comment - get all comments.
 
 [example json output]
 {
-  "data": [
-    {
-      "id": 22,
-      "date_create": "2021-12-13 05:47:27.186034",
-      "date_update": "2021-12-13 05:47:27.186034",
-      "text": "Мне не нравится",
-      "user_id": 3,
-      "mark": 5
-    },
-    {
-      "id": 23,
-      "date_create": "2021-12-13 05:47:59.329058",
-      "date_update": "2021-12-13 05:47:59.329058",
-      "text": "Круто",
-      "user_id": 4,
-      "mark": 5
+  "data": {
+    "comments":
+      [
+        {
+          "id": 22,
+          "date_create": "2021-12-13 05:47:27.186034",
+          "date_update": "2021-12-13 05:47:27.186034",
+          "text": "Мне не нравится",
+          "user_id": 3,
+          "mark": 5
+        },
+        {
+          "id": 23,
+          "date_create": "2021-12-13 05:47:59.329058",
+          "date_update": "2021-12-13 05:47:59.329058",
+          "text": "Круто",
+          "user_id": 4,
+          "mark": 5
+        }
+      ]
+    "stats": {
+      "0": {
+        "mark": 5,
+        "count": 1
+      },
+      "1": {
+        "mark": 1,
+        "count": 5
+      },
+      "mean": "5"
     }
-  ]
+  }
 }
 ```
 
