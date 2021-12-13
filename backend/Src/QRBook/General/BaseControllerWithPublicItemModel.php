@@ -38,10 +38,12 @@ class BaseControllerWithPublicItemModel extends BaseControllerWithItemModel
                 array("data" => $object)
             );
         }
+        $input = array();
+        $this->beforeFindAll(array(), $input);
         return new Response(
             StatusCode::SUCCESS_200,
             array(
-                "data" => $this->itemModel->findAll(array())
+                "data" => $this->itemModel->findAll($input)
             )
         );
     }

@@ -13,11 +13,12 @@ class QRCodeModel extends BaseModel
             c.*
         FROM
             qr_card c
-        LEFT JOIN
-            qr_user u ON u.id = c.user_id
         WHERE
-            u.email = :email
+            c.user_id = :user_id
+        ORDER BY
+            date_update ${params['order']}
         ";
+        unset($params['order']);
         return $this->getConnector()->select($statement, $params);
     }
 

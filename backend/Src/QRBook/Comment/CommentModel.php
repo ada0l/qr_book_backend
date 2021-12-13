@@ -11,7 +11,10 @@ class CommentModel extends BaseModel
         $statement = "
         SELECT *
         FROM qr_comment
+        ORDER BY
+            date_update ${params['order']}
         ";
+        unset($params['order']);
         return $this->getConnector()->select(
             $statement
         );

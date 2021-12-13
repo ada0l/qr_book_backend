@@ -51,10 +51,14 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
                 array("data" => $object)
             );
         } else {
+            $input = array(
+                'user_id' => $auth['id']
+            );
+            $this->beforeFindAll($auth, $input);
             return new Response(
                 StatusCode::SUCCESS_200,
                 array(
-                    "data" => $this->itemModel->findAll(array('email' => $auth['email']))
+                    "data" => $this->itemModel->findAll($input)
                 )
             );
         }
@@ -165,11 +169,6 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
                 StatusCode::SUCCESS_200,
                 array("data" => $this->itemModel->findByUserId(array('user_id' => $auth['id'])))
             );
-        } else {
-            return new Response(
-                StatusCode::CLIENT_ERROR_404,
-                array("data" => "id required")
-            );
         }
         return $auth;
     }
@@ -205,6 +204,13 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
             }
         }
         return $auth;
+    }
+
+    public function beforeFindAll($auth, &$input) {
+        $input['order'] = $_GET['order'];
+        if ($input['order'] != 'ASC' && $input['order'] != 'DESC') {
+            $input['order'] = 'DESC';
+        }
     }
 
     public function beforeCreate($auth, &$input)
