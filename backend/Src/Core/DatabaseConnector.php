@@ -47,8 +47,10 @@ class DatabaseConnector
     public function executeStatement($statement_ = "", $params = [])
     {
         try {
+            $this->dbConnection->beginTransaction();
             $statement = $this->dbConnection->prepare($statement_);
             $statement->execute($params);
+            $this->dbConnection->commit();
             return $statement;
         } catch (PDOException $e) {
             exit($e->getMessage());
