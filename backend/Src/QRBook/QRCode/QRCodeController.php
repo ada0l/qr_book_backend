@@ -8,7 +8,7 @@ class QRCodeController extends BaseControllerWithItemModel
 {
     public function __construct($db, $requestMethod, $params)
     {
-        parent::__construct($db, $requestMethod, $params, "Src\QRBook\QRCode\QRCodeModel");
+        parent::__construct($db, $requestMethod, $params, "Src\QRBook\QRCode\QRCodeModel", false);
         $this->addMethodValidator("POST", "Src\QRBook\QRCode\CreateQRCodeValidator");
         $this->addMethodValidator("PUT", "Src\QRBook\QRCode\CreateQRCodeValidator");
     }

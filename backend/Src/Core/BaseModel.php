@@ -35,6 +35,10 @@ class BaseModel
         throw new Exception("Not implemented");
     }
 
+    public function findByUserId($params) {
+        throw new Exception("Not implemented");
+    }
+
     /**
      * @throws Exception
      */

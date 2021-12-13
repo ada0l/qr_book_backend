@@ -95,4 +95,17 @@ class UserModel extends BaseModel
             return null;
         }
     }
+
+    public function getCount() {
+        $statement = "
+        SELECT
+            COUNT(*)
+        FROM
+            qr_user;
+        ";
+
+        return $this->getConnector()->select(
+            $statement
+        );
+    }
 }

@@ -55,22 +55,6 @@ DELETE /qr?id=10 - delete qr of user, whose id is 10.
 GET /link?uuid=... - redirect from qr to user link
 ```
 
-# TO DO endpoints
-
-## admin panel
-
-```
-GET /admin/list - get list of not verified qr'r
-```
-
-```
-POST /admin/verify?id=10 - verify qr, whose id is 10.
-```
-
-```
-POST /admin/reject?id=10 - reject qr, whose id is 10.
-```
-
 ## comments
 
 ```
@@ -93,4 +77,20 @@ DELETE /comment?id=10 - delete comment of user, whose id is 10.
 
 ```
 GET /stats - get statistic of site
+```
+
+# TO DO endpoints
+
+## admin panel
+
+```
+GET /admin/list - get list of not verified qr'r
+```
+
+```
+POST /admin/verify?id=10 - verify qr, whose id is 10.
+```
+
+```
+POST /admin/reject?id=10 - reject qr, whose id is 10.
 ```

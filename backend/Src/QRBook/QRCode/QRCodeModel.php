@@ -98,4 +98,17 @@ class QRCodeModel extends BaseModel
             $params
         );
     }
+
+    public function getCount() {
+        $statement = "
+        SELECT
+            COUNT(*)
+        FROM
+            qr_card;
+        ";
+
+        return $this->getConnector()->select(
+            $statement
+        );
+    }
 }
