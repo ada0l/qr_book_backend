@@ -15,8 +15,12 @@ class CommentModel extends BaseModel
             date_update ${params['order']}
         ";
         unset($params['order']);
-        return $this->getConnector()->select(
+        $comments = $this->getConnector()->select(
             $statement
+        );
+        return array(
+            "comments" => $comments,
+            "stats" => $this->getCount()
         );
     }
     public function find($params)
@@ -89,4 +93,27 @@ class CommentModel extends BaseModel
         );
     }
 
+    public function getCount() {
+        $statement = "
+        SELECT
+            mark,
+            COUNT(*)
+        FROM
+            qr_comment
+        GROUP BY 1";
+        $stats_by_marks = $this->getConnector()->select(
+            $statement
+        );
+        $statement = "
+        SELECT
+            AVG(mark)
+        FROM
+            qr_comment;
+        ";
+        $avg = $this->getConnector()->select(
+            $statement
+        )[0]['avg'];
+        $stats_by_marks['mean'] = $avg;
+        return $stats_by_marks;
+    }
 }
