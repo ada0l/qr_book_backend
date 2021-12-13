@@ -52,6 +52,9 @@ switch ($uri[1]) {
     case 'comment':
         $controller = "Src\QRBook\Comment\CommentController";
         break;
+    case 'image':
+        $controller = "Src\QRBook\Image\ImageController";
+        break;
 }
 
 (new $controller(

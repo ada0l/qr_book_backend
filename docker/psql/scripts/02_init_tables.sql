@@ -32,6 +32,7 @@ CREATE TABLE qr_user (
   name VARCHAR(50) NOT NULL,
   password VARCHAR(250) NOT NULL,
   role_id INT NOT NULL,
+  image_hash uuid,
   CONSTRAINT "fk_role" FOREIGN KEY(role_id) REFERENCES qr_role(id) ON DELETE CASCADE
 );
 

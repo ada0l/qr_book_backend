@@ -84,6 +84,22 @@ class UserModel extends BaseModel
         );
     }
 
+    public function setImageHash($params) {
+        $statement = "
+        UPDATE
+            qr_user
+        SET
+            image_hash=:hash,
+            date_update=(now() at time zone 'utc')
+        WHERE
+            id=:id
+        ";
+        return $this->getConnector()->executeStatement(
+            $statement,
+            $params
+        );
+    }
+
     public function verify($params)
     {
         $user = $this->findWithPassword(array('email' => $params['email']));
