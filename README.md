@@ -44,7 +44,7 @@ POST /user - create new user. Required fields is email, name, password.
 [json input]
 "name": length(2, 50)
 "email": legth(2, 50)
-"password": TODO
+"password": length(8, 50)
 
 [example json output]
 {
@@ -63,6 +63,20 @@ PUT /user - update authorized user. Required fields is email, name.
 {
   "data": "The user is created"
 }
+```
+
+```
+GET /image?hash=... - get image of user
+
+[get variables input]
+"hash"
+```
+
+```
+POST /image?hash=... - set image of user
+
+[example mulitipart form input]
+"image"
 ```
 
 ## qr's

@@ -12,7 +12,7 @@ class CreateUserValidator extends Validator
         parent::__construct(array(
             'email' => array("isEmail", ["lenInRange", [2, 50]]),
             'name' => array(["lenInRange", [2, 50]]),
-            'password' => array(["lenInRange", [2, 50]])
+            'password' => array(["lenInRange", [8, 50]])
         ), true);
     }
 }
