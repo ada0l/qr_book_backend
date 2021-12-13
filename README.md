@@ -23,18 +23,18 @@ GET /user - return profile of current user
 
 [example json output]
 {
-	"data": {
-		"id": 1,
-		"name": "Andrey",
-		"email": "ada0l@gmail.com",
-		"role": {
-			"name": "common",
-			"permissions": [
-				"create qr code",
-				"writing feedback"
-			]
-		}
-	}
+  "data": {
+    "id": 1,
+    "name": "Andrey",
+    "email": "ada0l@gmail.com",
+    "role": {
+      "name": "common",
+      "permissions": [
+        "create qr code",
+        "writing feedback"
+      ]
+    }
+  }
 }
 ```
 
@@ -48,7 +48,7 @@ POST /user - create new user. Required fields is email, name, password.
 
 [example json output]
 {
-	"data": "The user is updated"
+  "data": "The user is updated"
 }
 ```
 
@@ -61,7 +61,7 @@ PUT /user - update authorized user. Required fields is email, name.
 
 [example json output]
 {
-	"data": "The user is created"
+  "data": "The user is created"
 }
 ```
 
@@ -75,24 +75,24 @@ GET /qr - get list of qr's of user.
 
 [example json output]
 {
-	"data": [
-		{
-			"id": 8,
-			"date_create": "2021-12-12 14:30:03.950018",
-			"date_update": "2021-12-12 14:30:03.950018",
-			"title": "Title example",
-			"text": "text example",
-			"uuid": null,
-			"user_id": 1,
-			"light_color": "111111",
-			"dark_color": "111111",
-			"frame_id": 1,
-			"frame_text": "example",
-			"frame_color": "111111",
-			"frame_text_color": "111111",
-			"quality": "M"
-		}
-    ]		
+  "data": [
+    {
+	  "id": 8,
+      "date_create": "2021-12-12 14:30:03.950018"
+      "date_update": "2021-12-12 14:30:03.950018",
+      "title": "Title example",
+      "text": "text example",
+      "uuid": null,
+      "user_id": 1,
+      "light_color": "111111",
+      "dark_color": "111111",
+      "frame_id": 1,
+      "frame_text": "example",
+      "frame_color": "111111",
+      "frame_text_color": "111111",
+      "quality": "M"
+    }
+  ]		
 }
 ```
 
@@ -105,22 +105,22 @@ GET /qr?id=10 - get qr of user, whose id is 10.
 
 [example json output]
 {
-	"data": {
-        "id": 8,
-        "date_create": "2021-12-12 14:30:03.950018",
-        "date_update": "2021-12-12 14:30:03.950018",
-        "title": "Title example",
-        "text": "text example",
-        "uuid": null,
-        "user_id": 1,
-        "light_color": "111111",
-        "dark_color": "111111",
-        "frame_id": 1,
-        "frame_text": "example",
-        "frame_color": "111111",
-        "frame_text_color": "111111",
-        "quality": "M"
-	}
+  "data": {
+    "id": 8,
+    "date_create": "2021-12-12 14:30:03.950018",
+    "date_update": "2021-12-12 14:30:03.950018",
+    "title": "Title example",
+    "text": "text example",
+    "uuid": null,
+    "user_id": 1,
+    "light_color": "111111",
+    "dark_color": "111111",
+    "frame_id": 1,
+    "frame_text": "example",
+    "frame_color": "111111",
+    "frame_text_color": "111111",
+    "quality": "M"
+  }
 }
 ```
 
@@ -141,22 +141,22 @@ POST /qr - create new qr.
 
 [example json output]
 {
-	"data": {
-		"id": 10,
-		"date_create": "2021-12-13 14:00:31.925011",
-		"date_update": "2021-12-13 14:00:31.925011",
-		"title": "asdasdasd",
-		"text": "https:\/\/google.com",
-		"uuid": "7b6babe4-c22b-d22e-c5fe-ee2f51d34959",
-		"user_id": 1,
-		"light_color": "111111",
-		"dark_color": "111111",
-		"frame_id": 1,
-		"frame_text": "asd",
-		"frame_color": "111111",
-		"frame_text_color": "111111",
-		"quality": "M"
-	}
+  "data": {
+    "id": 10,
+    "date_create": "2021-12-13 14:00:31.925011",
+    "date_update": "2021-12-13 14:00:31.925011",
+    "title": "asdasdasd",
+    "text": "https:\/\/google.com",
+    "uuid": "7b6babe4-c22b-d22e-c5fe-ee2f51d34959",
+    "user_id": 1,
+    "light_color": "111111",
+    "dark_color": "111111",
+    "frame_id": 1,
+    "frame_text": "asd",
+    "frame_color": "111111",
+    "frame_text_color": "111111",
+    "quality": "M"
+  }
 }
 ```
 
@@ -179,7 +179,7 @@ DELETE /qr?id=10 - delete qr of user, whose id is 10.
 
 [example json output]
 {
-	"data": "The object is deleted"
+  "data": "The object is deleted"
 }
 ```
 
@@ -202,24 +202,24 @@ GET /comment - get all comments.
 
 [example json output]
 {
-	"data": [
-		{
-			"id": 22,
-			"date_create": "2021-12-13 05:47:27.186034",
-			"date_update": "2021-12-13 05:47:27.186034",
-			"text": "Мне не нравится",
-			"user_id": 3,
-			"mark": 5
-		},
-		{
-			"id": 23,
-			"date_create": "2021-12-13 05:47:59.329058",
-			"date_update": "2021-12-13 05:47:59.329058",
-			"text": "Круто",
-			"user_id": 4,
-			"mark": 5
-		}
-	]
+  "data": [
+    {
+      "id": 22,
+      "date_create": "2021-12-13 05:47:27.186034",
+      "date_update": "2021-12-13 05:47:27.186034",
+      "text": "Мне не нравится",
+      "user_id": 3,
+      "mark": 5
+    },
+    {
+      "id": 23,
+      "date_create": "2021-12-13 05:47:59.329058",
+      "date_update": "2021-12-13 05:47:59.329058",
+      "text": "Круто",
+      "user_id": 4,
+      "mark": 5
+    }
+  ]
 }
 ```
 
@@ -232,14 +232,14 @@ GET /comment?id=10 - get all comments, whose id is 10.
 
 [example json output]
 {
-    "data": {
-        "id": 22,
-        "date_create": "2021-12-13 05:47:27.186034",
-        "date_update": "2021-12-13 05:47:27.186034",
-        "text": "Мне не нравится",
-        "user_id": 3,
-        "mark": 5
-    }
+  "data": {
+    "id": 22,
+    "date_create": "2021-12-13 05:47:27.186034",
+    "date_update": "2021-12-13 05:47:27.186034",
+    "text": "Мне не нравится",
+    "user_id": 3,
+    "mark": 5
+  }
 }
 ```
 
@@ -248,20 +248,20 @@ POST /comment - create comment
 
 [json input]
 {
-	"text": "Мне не нрdавится",
-	"mark": 5
+  "text": "Мне не нрdавится",
+  "mark": 5
 }
 
 [example json output]
 {
-	"data": {
-		"id": 23,
-		"date_create": "2021-12-13 05:47:59.329058",
-		"date_update": "2021-12-13 05:47:59.329058",
-		"text": "Cool",
-		"user_id": 4,
-		"mark": 5
-	}
+  "data": {
+    "id": 23,
+    "date_create": "2021-12-13 05:47:59.329058",
+    "date_update": "2021-12-13 05:47:59.329058",
+    "text": "Cool",
+    "user_id": 4,
+    "mark": 5
+  }
 }
 ```
 
@@ -294,14 +294,14 @@ GET /stats - get statistic of site
 
 [example json output]
 {
-	"data": {
-		"count_of_users": {
-		    "count": 1
-		},
-		"count_of_qrs": {
-			"count": 10
-		}
-	}
+  "data": {
+    "count_of_users": {
+      "count": 1
+    },
+    "count_of_qrs": {
+      "count": 10
+    }
+  }
 }
 ```
 
