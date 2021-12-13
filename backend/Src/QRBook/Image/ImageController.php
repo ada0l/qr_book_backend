@@ -31,8 +31,12 @@ class ImageController extends BaseControllerWithUserModel
         $auth = $this->getAuthorization();
         if (is_array($auth)) {
             $image = $_FILES['image'];
+            $fInfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($fInfo, $_FILES['image']['tmp_name']);
             $hash = $this->getHash($image);
-            if (move_uploaded_file($image['tmp_name'], $this->getFilePathByHash($hash))) {
+            finfo_close($fInfo);
+            $allowed_types = array('image/jpeg', 'image/png');
+            if (in_array($mime, $allowed_types) && move_uploaded_file($image['tmp_name'], $this->getFilePathByHash($hash))) {
                 $this->getUserModel()->setImageHash(array("hash" => $hash, "id" => $auth['id']));
                 return new Response(
                     StatusCode::SUCCESS_200,
