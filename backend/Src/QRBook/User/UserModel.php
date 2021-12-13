@@ -122,6 +122,6 @@ class UserModel extends BaseModel
 
         return $this->getConnector()->select(
             $statement
-        );
+        )[0]['count'];
     }
 }
