@@ -77,7 +77,7 @@ GET /qr - get list of qr's of user.
 {
   "data": [
     {
-	  "id": 8,
+      "id": 8,
       "date_create": "2021-12-12 14:30:03.950018"
       "date_update": "2021-12-12 14:30:03.950018",
       "title": "Title example",
@@ -97,7 +97,7 @@ GET /qr - get list of qr's of user.
 ```
 
 ```
-GET /qr?id=10 - get qr of user, whose id is 10.
+GET /qr?id=10 - get qr of user, which id is 10.
 
 [get variables input]
 "order": "ASC" or "DESC"
@@ -161,7 +161,7 @@ POST /qr - create new qr.
 ```
 
 ```
-PUT /qr?id=10 - update qr of user, whose id is 10.
+PUT /qr?id=10 - update qr of user, which id is 10.
 
 [json input]
 the same as with the post method 
@@ -172,7 +172,7 @@ the same as with the post method
 ```
 
 ```
-DELETE /qr?id=10 - delete qr of user, whose id is 10.
+DELETE /qr?id=10 - delete qr of user, which id is 10.
 
 [get variables input]
 "id": int
@@ -224,7 +224,7 @@ GET /comment - get all comments.
 ```
 
 ```
-GET /comment?id=10 - get all comments, whose id is 10.
+GET /comment?id=10 - get all comments, which id is 10.
 
 [get variables input]
 "order": "ASC" or "DESC"
@@ -266,7 +266,7 @@ POST /comment - create comment
 ```
 
 ```
-PUT /comment?id=10 - update comment of user, whose id is 10.
+PUT /comment?id=10 - update comment of user, which id is 10.
 
 [get variables input]
 "id": int
@@ -280,7 +280,7 @@ the same as with the post method
 ```
 
 ```
-DELETE /comment?id=10 - delete comment of user, whose id is 10.
+DELETE /comment?id=10 - delete comment of user, which id is 10.
 
 [get variables input]
 "id": int
@@ -314,9 +314,9 @@ GET /admin/list - get list of not verified qr'r
 ```
 
 ```
-POST /admin/verify?id=10 - verify qr, whose id is 10.
+POST /admin/verify?id=10 - verify qr, which id is 10.
 ```
 
 ```
-POST /admin/reject?id=10 - reject qr, whose id is 10.
+POST /admin/reject?id=10 - reject qr, which id is 10.
 ```
