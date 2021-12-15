@@ -158,6 +158,6 @@ class BaseController
 
     public function redirect($url): Response
     {
-        header('Location: https://' . preg_replace(array('/^https:/', '/^http/',), '', $url));
+        header('Location: https://' . preg_replace(array('/^https:\/\//', '/^http:\/\//',), '', $url));
     }
 }
