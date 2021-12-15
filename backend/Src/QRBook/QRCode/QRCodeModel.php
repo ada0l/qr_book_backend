@@ -10,11 +10,15 @@ class QRCodeModel extends BaseModel
     {
         $statement = "
         SELECT
-            c.*
+            c.*, COUNT(s) as scans
         FROM
             qr_card c
+        LEFT JOIN
+            qr_scan s ON s.card_id = c.id
         WHERE
             c.user_id = :user_id
+        GROUP BY
+            c.id
         ORDER BY
             date_update ${params['order']}
         ";
@@ -26,13 +30,17 @@ class QRCodeModel extends BaseModel
     {
         $statement = "
         SELECT
-            c.*
+            c.*, COUNT(s) as scans
         FROM
             qr_card c
         LEFT JOIN
             qr_user u ON u.id = c.user_id
+        LEFT JOIN
+            qr_scan s ON s.card_id = c.id
         WHERE
             c.id = :id
+        GROUP BY
+            c.id
         ";
         return $this->getConnector()->select($statement, $params)[0];
     }

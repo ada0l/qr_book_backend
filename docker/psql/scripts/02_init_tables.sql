@@ -64,6 +64,12 @@ CREATE TABLE qr_comment (
   CONSTRAINT "fk_user" FOREIGN KEY(user_id) REFERENCES qr_user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE qr_scan (
+  id SERIAL PRIMARY KEY,
+  date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
+  card_id INT NOT NULL
+);
+
 CREATE TABLE qr_warning (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
