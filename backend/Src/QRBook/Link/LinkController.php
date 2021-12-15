@@ -27,8 +27,9 @@ class LinkController extends BaseControllerWithUserModel
         $qrCode = $this->qrCodeModel->findByUUID(array('uuid' => $_GET['uuid']));
         if ($qrCode) {
             $this->scanModel->insert(array("card_id" => $qrCode['id']));
-            return $this->redirectResponse($qrCode['text']);
+            return $this->redirect($qrCode['text']);
+        } else {
+            return $this->notFoundResponse();
         }
-        return $this->notFoundResponse();
     }
 }

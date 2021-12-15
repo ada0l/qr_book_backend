@@ -156,9 +156,8 @@ class BaseController
         $this->methodsValidators[$methodKey] = $methodValidator;
     }
 
-    public function redirectResponse($url)
+    public function redirect($url): Response
     {
         header('Location: https://' . preg_replace(array('/^https:/', '/^http/',), '', $url));
-        return new Response(StatusCode::REDIRECTION_300);
     }
 }
