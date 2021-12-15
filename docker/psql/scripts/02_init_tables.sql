@@ -67,7 +67,8 @@ CREATE TABLE qr_comment (
 CREATE TABLE qr_scan (
   id SERIAL PRIMARY KEY,
   date_create TIMESTAMP without time zone default (now() at time zone 'utc'),
-  card_id INT NOT NULL
+  card_id INT NOT NULL,
+  CONSTRAINT "fk_card" FOREIGN KEY(card_id) REFERENCES qr_card(id) ON DELETE CASCADE
 );
 
 CREATE TABLE qr_warning (
