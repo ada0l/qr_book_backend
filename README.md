@@ -148,7 +148,7 @@ POST /qr - create new qr.
 "dark_color": hex color
 "isURL": bool
 "frame_id": int in range[1, 4]
-"frame_text": length(1, 32)
+"frame_text": length(0, 32)
 "frame_color": hex color
 "frame_text_color": hex color
 "quality": "L" or "M" or "Q" or "H"

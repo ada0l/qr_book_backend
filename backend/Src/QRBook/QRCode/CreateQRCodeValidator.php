@@ -15,7 +15,7 @@ class CreateQRCodeValidator extends Validator
             'light_color' => array('isColorRGB'),
             'dark_color' => array('isColorRGB'),
             'frame_id' => array(['inRange', [1, 4]]),
-            'frame_text' => array(['lenInRange', [1, 32]]),
+            'frame_text' => array(['lenInRange', [0, 32]]),
             'frame_color' => array('isColorRGB'),
             'frame_text_color' => array('isColorRGB'),
             'quality' => array(['in', [["L", "M", "Q", "H"]]])
