@@ -23,6 +23,7 @@ class CommentModel extends BaseModel
             "stats" => $this->getCount()
         );
     }
+
     public function find($params)
     {
         $statement = "
@@ -63,7 +64,8 @@ class CommentModel extends BaseModel
         );
     }
 
-    public function update($params) {
+    public function update($params)
+    {
         $statement = "
         UPDATE
             qr_comment
@@ -79,6 +81,7 @@ class CommentModel extends BaseModel
             $params
         );
     }
+
     public function delete($params)
     {
         $statement = "
@@ -93,7 +96,8 @@ class CommentModel extends BaseModel
         );
     }
 
-    public function getCount() {
+    public function getCount()
+    {
         $statement = "
         SELECT
             mark,

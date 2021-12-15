@@ -2,6 +2,7 @@
 
 namespace Src\QRBook\Image;
 
+use DateTime;
 use Src\Core\Response;
 use Src\Core\StatusCode;
 use Src\QRBook\General\BaseControllerWithUserModel;
@@ -55,7 +56,7 @@ class ImageController extends BaseControllerWithUserModel
     public function getHash($file)
     {
         $filename = $_FILES['name'];
-        $timestamp = (new \DateTime())->getTimestamp();
+        $timestamp = (new DateTime())->getTimestamp();
         return md5("$filename$timestamp");
     }
 

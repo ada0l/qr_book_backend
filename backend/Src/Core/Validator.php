@@ -99,7 +99,8 @@ class Validator
         return null;
     }
 
-    public static function in($data, $values) {
+    public static function in($data, $values)
+    {
         for ($i = 0; $i < count($values); ++$i) {
             if ($data == $values[$i]) {
                 return null;

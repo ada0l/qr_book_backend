@@ -22,7 +22,8 @@ class QRCodeModel extends BaseModel
         return $this->getConnector()->select($statement, $params);
     }
 
-    public function find($params) {
+    public function find($params)
+    {
         $statement = "
         SELECT
             c.*
@@ -36,7 +37,8 @@ class QRCodeModel extends BaseModel
         return $this->getConnector()->select($statement, $params)[0];
     }
 
-    public function findByUUID($params) {
+    public function findByUUID($params)
+    {
         $statement = "
         SELECT
             c.*
@@ -48,7 +50,8 @@ class QRCodeModel extends BaseModel
         return $this->getConnector()->select($statement, $params)[0];
     }
 
-    public function insert($params) {
+    public function insert($params)
+    {
         $statement = "
         INSERT INTO qr_card
             (title, text, uuid, user_id, light_color, dark_color, frame_id, frame_text, frame_color,
@@ -62,7 +65,9 @@ class QRCodeModel extends BaseModel
             $params
         );
     }
-    public function update($params) {
+
+    public function update($params)
+    {
         $statement = "
         UPDATE 
             qr_card
@@ -87,7 +92,8 @@ class QRCodeModel extends BaseModel
         );
     }
 
-    public function delete($params) {
+    public function delete($params)
+    {
         $statement = "
         DELETE FROM
             qr_card
@@ -100,7 +106,8 @@ class QRCodeModel extends BaseModel
         );
     }
 
-    public function getCount() {
+    public function getCount()
+    {
         $statement = "
         SELECT
             COUNT(*)

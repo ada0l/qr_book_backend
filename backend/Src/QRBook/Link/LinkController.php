@@ -9,6 +9,7 @@ use Src\QRBook\QRCode\QRCodeModel;
 class LinkController extends BaseControllerWithUserModel
 {
     private $qrCodeModel;
+
     public function __construct($db, $requestMethod, $params)
     {
         parent::__construct($db, $requestMethod, $params);
@@ -20,8 +21,7 @@ class LinkController extends BaseControllerWithUserModel
         $qrCode = $this->qrCodeModel->findByUUID(array('uuid' => $_GET['uuid']));
         if ($qrCode) {
             $this->redirect($qrCode['text']);
-        } else {
-            return $this->notFoundResponse();
         }
+        return $this->notFoundResponse();
     }
 }

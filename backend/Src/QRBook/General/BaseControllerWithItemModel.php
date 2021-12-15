@@ -208,7 +208,8 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
         return $auth;
     }
 
-    public function beforeFindAll($auth, &$input) {
+    public function beforeFindAll($auth, &$input)
+    {
         $input['order'] = $_GET['order'];
         if ($input['order'] != 'ASC' && $input['order'] != 'DESC') {
             $input['order'] = 'DESC';

@@ -2,6 +2,7 @@
 
 namespace Src\QRBook\QRCode;
 
+use DateTime;
 use Src\QRBook\General\BaseControllerWithItemModel;
 
 class QRCodeController extends BaseControllerWithItemModel
@@ -13,9 +14,10 @@ class QRCodeController extends BaseControllerWithItemModel
         $this->addMethodValidator("PUT", "Src\QRBook\QRCode\CreateQRCodeValidator");
     }
 
-    public function beforeCreate($auth, & $input) {
+    public function beforeCreate($auth, &$input)
+    {
         if ($input['isURL']) {
-            $timestamp = (new \DateTime())->getTimestamp();
+            $timestamp = (new DateTime())->getTimestamp();
             $input['uuid'] = md5("${input['title']}${input['text']}${input['user_id']}${timestamp}");
         } else {
             $input['uuid'] = null;
@@ -23,7 +25,7 @@ class QRCodeController extends BaseControllerWithItemModel
         unset($input['isURL']);
     }
 
-    public function beforeUpdate($auth, & $input)
+    public function beforeUpdate($auth, &$input)
     {
         parent::beforeUpdate($auth, $input);
         $this->beforeCreate($auth, $input);

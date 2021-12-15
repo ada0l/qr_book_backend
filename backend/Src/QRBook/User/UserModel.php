@@ -84,7 +84,8 @@ class UserModel extends BaseModel
         );
     }
 
-    public function setImageHash($params) {
+    public function setImageHash($params)
+    {
         $statement = "
         UPDATE
             qr_user
@@ -112,7 +113,8 @@ class UserModel extends BaseModel
         }
     }
 
-    public function getCount() {
+    public function getCount()
+    {
         $statement = "
         SELECT
             COUNT(*)
