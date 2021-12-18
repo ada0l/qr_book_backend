@@ -18,11 +18,15 @@ class ImageController extends BaseControllerWithUserModel
 
     public function getMethod(): Response
     {
-        header("Content-Type: image/png");
-        header("Content-Transfer-Encoding: Binary");
-        if (preg_match('/^[a-fA-F0-9]{32}$/', $_GET['hash'])) {
-            readfile($this->getFilePathByHash($_GET['hash']));
-            return new Response(StatusCode::REDIRECTION_300);
+        $hash = preg_replace("/-/", '', $_GET['hash']);
+        if (preg_match('/^[a-fA-F0-9]{32}$/', $hash)) {
+            $file = $this->getFilePathByHash($hash);
+            if (file_exists($file)) {
+                header("Content-Type: image/png");
+                header("Content-Transfer-Encoding: Binary");
+                readfile($this->getFilePathByHash($hash));
+                return new Response(StatusCode::REDIRECTION_300);
+            }
         }
         return $this->notFoundResponse();
     }
