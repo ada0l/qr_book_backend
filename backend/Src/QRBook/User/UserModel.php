@@ -19,7 +19,7 @@ class UserModel extends BaseModel
     {
         $statement = "
         SELECT
-            id, name, email, password, role_id
+            id, name, email, password, role_id, image_hash
         FROM
             qr_user
         WHERE
