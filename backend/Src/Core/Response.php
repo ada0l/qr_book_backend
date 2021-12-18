@@ -4,8 +4,8 @@ namespace Src\Core;
 
 class Response
 {
-    private mixed $status_code;
-    private mixed $body;
+    private $status_code;
+    private $body;
 
     public function __construct($status_code = StatusCode::SUCCESS_200, $body = null)
     {
