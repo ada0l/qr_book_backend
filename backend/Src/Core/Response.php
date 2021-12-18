@@ -4,15 +4,12 @@ namespace Src\Core;
 
 class Response
 {
-    private $status_code;
-    private $body;
+    private mixed $status_code;
+    private mixed $body;
 
-    public function __construct($status_code = null, $body = null)
+    public function __construct($status_code = StatusCode::SUCCESS_200, $body = null)
     {
         $this->status_code = $status_code;
-        if ($status_code == null) {
-            $status_code = StatusCode::SUCCESS_200;
-        }
         $this->body = $body;
         if ($body == null) {
             $this->body = json_encode("{}");

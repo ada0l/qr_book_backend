@@ -17,8 +17,10 @@ class QRCodeController extends BaseControllerWithItemModel
     public function beforeCreate($auth, &$input)
     {
         if ($input['isURL']) {
+            $title = $input['title'];
+            $text = $input['text'];
             $timestamp = (new DateTime())->getTimestamp();
-            $input['uuid'] = md5("${input['title']}${input['text']}${input['user_id']}${timestamp}");
+            $input['uuid'] = md5("$title$text$timestamp");
         } else {
             $input['uuid'] = null;
         }

@@ -82,4 +82,3 @@ class StatusCode
     public const SERVER_ERROR_525 = 'HTTP/1.1 525 SSL Handshake Failed';
     public const SERVER_ERROR_526 = 'HTTP/1.1 526 Invalid SSL Certificate';
 }
-

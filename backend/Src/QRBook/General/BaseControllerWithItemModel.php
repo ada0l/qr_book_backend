@@ -227,7 +227,7 @@ class BaseControllerWithItemModel extends BaseControllerWithUserModel
         }
     }
 
-    public function access($auth, &$input): bool
+    public function access($auth, $input): bool
     {
         return $auth['id'] == $input['user_id'];
     }

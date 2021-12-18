@@ -6,7 +6,7 @@ use Src\Core\BaseModel;
 
 class CommentModel extends BaseModel
 {
-    public function findAll($params)
+    public function findAll($params): array
     {
         $statement = "
         SELECT *

@@ -2,7 +2,6 @@
 
 namespace Src\QRBook\Comment;
 
-use Src\Core\Response;
 use Src\QRBook\General\BaseControllerWithPublicItemModel;
 
 class CommentController extends BaseControllerWithPublicItemModel

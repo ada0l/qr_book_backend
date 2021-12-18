@@ -160,4 +160,12 @@ class BaseController
     {
         header('Location: https://' . preg_replace(array('/^https:\/\//', '/^http:\/\//',), '', $url));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
 }

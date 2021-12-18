@@ -2,6 +2,7 @@
 
 namespace Src\QRBook\Link;
 
+use Exception;
 use Src\Core\Response;
 use Src\QRBook\General\BaseControllerWithUserModel;
 use Src\QRBook\QRCode\QRCodeModel;
@@ -20,7 +21,7 @@ class LinkController extends BaseControllerWithUserModel
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getMethod(): Response
     {
