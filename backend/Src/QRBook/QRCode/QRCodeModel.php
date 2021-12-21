@@ -82,7 +82,6 @@ class QRCodeModel extends BaseModel
         SET
             title=:title,
             text=:text,
-            uuid=:uuid,
             light_color=:light_color,
             dark_color=:dark_color,
             frame_id=:frame_id,

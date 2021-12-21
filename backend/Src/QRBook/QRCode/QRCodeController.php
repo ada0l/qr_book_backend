@@ -30,6 +30,6 @@ class QRCodeController extends BaseControllerWithItemModel
     public function beforeUpdate($auth, &$input)
     {
         parent::beforeUpdate($auth, $input);
-        $this->beforeCreate($auth, $input);
+        unset($input['isURL']);
     }
 }
